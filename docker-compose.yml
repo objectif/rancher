@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    image: tomee:latest
+    build: tomee
+    ports: 
+      - "8081:8080"
+    depends_on:
+      - db
+    links:
+      - db
+  db:
+    image: postgres:latest
+    build: postgres
+    ports: 
+      - "5432:5432" 
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
